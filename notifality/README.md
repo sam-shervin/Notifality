@@ -15,6 +15,7 @@ Notifality is a one-stop solution for managing deadlines, tasks, and schedules a
     ```
 2. **Set Up Dependencies:**
     ```bash
+    cd notifality
     npm install
     ```
 3. **Run the Application:**
