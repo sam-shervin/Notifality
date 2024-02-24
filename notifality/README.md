@@ -1,40 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Notifality: Manage Deadlines, Tasks, and Schedules Efficiently
 
-## Getting Started
+Notifality is a one-stop solution for managing deadlines, tasks, and schedules across various platforms like LMS, Microsoft Teams, and VITOL (likely a specific learning management system within your institution). It empowers you to:
 
-First, run the development server:
+-   **Consolidate Deadlines:** View all upcoming deadlines from LMS, Teams, and VITOL in one centralized location, eliminating the need to switch between different platforms.
+-   **Prioritize Tasks:** Organize your tasks based on importance and urgency, ensuring you focus on the most critical ones first.
+-   **Schedule Creation:** Craft your daily or weekly schedule, incorporating deadlines and tasks to maintain a clear overview of your commitments.
+-   **Future Enhancements:** We are actively working on integrating an AI bot within the app to provide further assistance and streamline the management process.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Getting Started:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/your-username/notifality.git
+    ```
+2. **Set Up Dependencies:**
+    ```bash
+    npm install
+    ```
+3. **Run the Application:**
+    ```bash
+    npm run dev
+    ```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**Disclaimer:**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This README is a template and might require adjustments based on your specific implementation and functionalities.
