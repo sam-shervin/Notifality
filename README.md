@@ -1,6 +1,6 @@
 ## Notifality: Manage Deadlines, Tasks, and Schedules Efficiently
 
-Notifality is a one-stop solution for managing deadlines, tasks, and schedules across various platforms like LMS, Microsoft Teams, and VITOL (likely a specific learning management system within your institution). It empowers you to:
+Notifality is a one-stop solution for managing deadlines, tasks, and schedules across various platforms like LMS, Microsoft Teams, and VITOL. It empowers you to:
 
 -   **Consolidate Deadlines:** View all upcoming deadlines from LMS, Teams, and VITOL in one centralized location, eliminating the need to switch between different platforms.
 -   **Prioritize Tasks:** Organize your tasks based on importance and urgency, ensuring you focus on the most critical ones first.

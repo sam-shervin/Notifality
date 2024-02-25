@@ -1,5 +1,4 @@
 import Button from "@/components/indexPage/button";
-import { WelcomeText } from "@/components/indexPage/welcomeText";
 import Box from "@/components/indexPage/boxes";
 import { Exo_2 } from "next/font/google";
 import { useRouter } from "next/router";
