@@ -42,7 +42,7 @@ export default function Home() {
             <section className="flex justify-center p-12">
                 <Button
                     label="Get Started"
-                    onClick={() => router.push("/credentials")}
+                    onClick={() => router.push("/scraper")}
                 />
             </section>
             {/*
