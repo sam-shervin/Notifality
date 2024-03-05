@@ -31,7 +31,8 @@ export default async function scrape(
         const browser = await puppeteer.launch({ headless: false });
         const page = await browser.newPage();
         await page.goto("https://teams.microsoft.com");
-        await page.setViewport({ width: 1920, height: 1080, isMobile: false });
+        await page.setViewport({ width: 1600, height: 900, isMobile: false });
+        console.log("Page opened");
 
         await page.waitForSelector("input[type=email]", {
             timeout: 50000,
@@ -47,52 +48,90 @@ export default async function scrape(
         await page.click("input[type=submit]"), { delay: 100 };
         await delay(2000);
         await page.click("input[type=submit]"), { delay: 100 };
+        console.log("Logged in");
+        await delay(10000);
 
         await page.waitForSelector("span[class=ts-popover-label]", {
             timeout: 50000,
         });
-        await page.click("span[class=ts-popover-label]");
+        //click until it;s present in the screen, use while loop
+        while (true) {
+            try {
+                await page.click("span[class=ts-popover-label]");
+            } catch (error) {
+                break;
+            }
+        }
         // make a mouse movement
         await page.mouse.move(10, 400);
         await delay(2000);
+        console.log("Clicked on the v2 icon");
         //use try catch block to handle the error
         try {
             await page.waitForSelector("button[aria-label=Assignments]", {
-                timeout: 50000,
+                timeout: 15000,
             });
             await page.click("button[aria-label=Assignments]");
+            console.log("Clicked on the assignments");
         } catch (error) {
-            await page.waitForSelector("button[aria-label=View more apps]", {
-                timeout: 50000,
-            });
-            await page.click("button[aria-label=View more apps]");
-
+            //use while loop to click on the view more apps
+            while (true) {
+                try {
+                    await page.waitForSelector(
+                        "span[class=fui-Button__icon rywnvv2]",
+                    );
+                    break;
+                } catch (error) {
+                    await page.mouse.move(10, 400);
+                    await delay(2000);
+                }
+            }
+            await page.click("span[class=fui-Button__icon rywnvv2]");
+            console.log("Clicked on the view more apps");
             await page.waitForSelector("button[aria-label=Assignments]", {
-                timeout: 50000,
+                timeout: 15000,
             });
+
             await page.click("button[aria-label=Assignments]");
+            console.log("Clicked on the assignments");
         }
 
-        await delay(20000);
-        const elementHandle = await page.$("iframe[data-tid=hwc-iframe]");
-        console.log(elementHandle);
+        await delay(30000);
+        //use try catch block to handle the error elementHandle = await page.$("iframe[data-tid=hwc-iframe]");
+        let elementHandle;
+        while (true) {
+            try {
+                elementHandle = await page.$("iframe[data-tid=hwc-iframe]");
+                break;
+            } catch (error) {
+                await delay(2000);
+            }
+        }
+
         if (elementHandle) {
+            await delay(20000);
             const frame = await elementHandle.contentFrame();
 
-            // class="tab-contents__7nQDH" -- query selector
-            const textContent = await frame.evaluate(() => {
-                const element = document.querySelector(".tab-contents__7nQDH");
-
-                return element?.textContent;
+            const data = await frame.evaluate(() => {
+                // select all text content one by one from class="tab-contents__7nQDH" and add it to an array
+                const result: (string | null)[] = [];
+                const elements = document.querySelectorAll(
+                    ".tab-contents__7nQDH",
+                );
+                Array.from(elements).forEach((element) => {
+                    result.push(element.textContent);
+                });
+                console.log(result);
+                console.log("Scraped data");
+                return result;
             });
 
-            // write the HTML content to a file
             const fs = require("fs");
-            fs.writeFileSync("pageContent.html", textContent);
+            fs.writeFileSync("pageContent.json", JSON.stringify(data));
         }
 
         const responseData = { message: "Received your request!" };
-
+        console.log(responseData);
         res.status(200).json(responseData);
     }
 }
